@@ -1,0 +1,15 @@
+.level-1 {
+	margin-left: 8px;
+}
+.level-2 {
+	margin-left: 16px;
+}
+.level-3 {
+	margin-left: 24px;
+}
+.level-4 {
+	margin-left: 32px;
+}
+svg {
+	width: 16px;
+}

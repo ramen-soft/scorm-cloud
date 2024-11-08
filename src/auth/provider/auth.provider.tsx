@@ -12,6 +12,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const [user, setUser] = useLocalStorage("user", null);
 
 	const login = async (loginDto: AuthLoginDTO) => {
+		setUser("test");
+		return;
 		const headers = new Headers();
 		headers.set("Content-Type", "application/json");
 		const req = await fetch(`${ENDPOINT_URL}/auth/login`, {

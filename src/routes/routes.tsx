@@ -23,7 +23,12 @@ const routes: RouteObject[] = [
 				],
 			},
 			{
-				element: <AuthenticationGuard guardType="unauthenticated" />,
+				element: (
+					<AuthenticationGuard
+						redirectPath="/"
+						guardType="unauthenticated"
+					/>
+				),
 				children: [
 					{
 						path: "/login",
