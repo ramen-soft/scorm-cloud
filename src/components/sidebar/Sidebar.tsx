@@ -1,4 +1,4 @@
-import { Home, LogOut, Package2, Workflow } from "lucide-react";
+import { Home, LogOut, Package2, User, Workflow } from "lucide-react";
 import { ISidebarItem, SidebarItem } from "./SidebarItem";
 import { Button } from "../ui/button";
 import { useAuth } from "@/auth/hooks/useAuth";
@@ -9,6 +9,16 @@ export const Sidebar = ({ open = false }: { open?: boolean }) => {
 
 	const links: ISidebarItem[] = [
 		{ label: "Home", icon: <Home />, url: "/" },
+		{
+			label: "Clientes",
+			icon: <User />,
+			url: "customers",
+		},
+		{
+			label: "Contenidos",
+			icon: <Package2 />,
+			url: "scorms",
+		},
 		{
 			label: "Item 1",
 			icon: <Package2 />,
