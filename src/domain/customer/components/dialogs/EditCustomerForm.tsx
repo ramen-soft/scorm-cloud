@@ -23,7 +23,7 @@ import React, { MouseEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { CustomerDetail, CustomerListItem } from "../../dto/customer.dto";
-import { getCustomer, saveCustomer } from "../../api/customer";
+import { deleteCustomer, getCustomer, saveCustomer } from "../../api/customer";
 import { isValidCIF, isValidNIF } from "@/lib/validators";
 import { Switch } from "@/components/ui/switch";
 import { MinusIcon, PlusIcon } from "lucide-react";
@@ -130,6 +130,17 @@ export const EditCustomerForm: React.FC<EditCustomerFormProps> = ({
 	const handleClose = () => {
 		form.reset();
 		setOpen(false);
+	};
+
+	const handleDelete = () => {
+		deleteCustomer(customer!.id!)
+			.then(() => {
+				handleClose();
+				onChange?.();
+			})
+			.catch((e) => {
+				console.log(e);
+			});
 	};
 
 	return (
@@ -262,7 +273,13 @@ export const EditCustomerForm: React.FC<EditCustomerFormProps> = ({
 								Cancelar
 							</Button>
 							<span className="flex-1"></span>
-							<Button variant="destructive">Eliminar</Button>
+							<Button
+								type="button"
+								onClick={handleDelete}
+								variant="destructive"
+							>
+								Eliminar
+							</Button>
 							<Button type="submit">Guardar cambios</Button>
 						</DialogFooter>
 					</form>

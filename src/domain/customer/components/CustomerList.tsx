@@ -61,9 +61,13 @@ export const CustomerList = ({
 									<TableCell>{customer.name}</TableCell>
 									<TableCell>
 										<div className="space-x-1">
-											{customer.origins.map((origin) => (
-												<Badge>{origin}</Badge>
-											))}
+											{customer.origins.map(
+												(origin, i) => (
+													<Badge key={i}>
+														{origin}
+													</Badge>
+												)
+											)}
 										</div>
 									</TableCell>
 									<TableCell>

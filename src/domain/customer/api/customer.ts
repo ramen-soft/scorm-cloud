@@ -45,6 +45,33 @@ export const saveCustomer = async (
 	return null;
 };
 
+export const deleteCustomer = async (customer_id: number) => {
+	const headers = new Headers();
+	headers.set("Content-Type", "application/json");
+	return new Promise((resolve, reject) => {
+		try {
+			fetch(`${ENDPOINT_URL}/customers/${customer_id}`, {
+				headers: headers,
+				method: "delete",
+			})
+				.then((res) => {
+					if (!res.ok) {
+						res.json().then((data) => {
+							reject(data);
+						});
+					} else {
+						res.json().then((data) => resolve(data));
+					}
+				})
+				.catch((e) => {
+					reject(e);
+				});
+		} catch (e) {
+			reject(e);
+		}
+	});
+};
+
 export const getCustomerScorms = async ({
 	customerId,
 	page,
