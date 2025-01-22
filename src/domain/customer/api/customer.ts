@@ -28,6 +28,11 @@ export const getCustomer = async (
 	return null;
 };
 
+export const getCustomerStats = async (customerId: number) => {
+	const res = await fetch(`${ENDPOINT_URL}/customers/${customerId}/stats`);
+	return res.json();
+};
+
 export const saveCustomer = async (
 	customer: Partial<CustomerDetail>
 ): Promise<CustomerDetail | null> => {
