@@ -1,4 +1,4 @@
-import { Home, LogOut, Package2, User, Workflow } from "lucide-react";
+import { Home, LogOut, Package2, User } from "lucide-react";
 import { ISidebarItem, SidebarItem } from "./SidebarItem";
 import { Button } from "../ui/button";
 import { useAuth } from "@/auth/hooks/useAuth";
@@ -19,6 +19,7 @@ export const Sidebar = ({ open = false }: { open?: boolean }) => {
 			icon: <Package2 />,
 			url: "scorms",
 		},
+		/*
 		{
 			label: "Item 1",
 			icon: <Package2 />,
@@ -28,6 +29,7 @@ export const Sidebar = ({ open = false }: { open?: boolean }) => {
 			],
 		},
 		{ label: "Item 2", icon: <Workflow />, url: "item2" },
+		 */
 	];
 
 	return (

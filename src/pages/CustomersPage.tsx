@@ -11,6 +11,7 @@ export const CustomersPage = () => {
 		count: 15,
 		results: [],
 		total: 0,
+		totalPages: 0,
 	});
 
 	useEffect(() => {

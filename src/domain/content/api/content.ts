@@ -1,4 +1,5 @@
 import { ENDPOINT_URL } from "@/consts";
+import { myFetch } from "@/hooks/useFetch";
 
 export const getScorms = async ({
 	page = 0,
@@ -7,13 +8,9 @@ export const getScorms = async ({
 	page: number;
 	limit: number;
 }) => {
-	const req = await fetch(
-		`${ENDPOINT_URL}/scorms?page=${page}&limit=${limit}`
-	);
-	return req.json();
+	return await myFetch(`${ENDPOINT_URL}/scorms?page=${page}&limit=${limit}`);
 };
 
 export const getScormInfo = async (id: number) => {
-	const req = await fetch(`${ENDPOINT_URL}/scorms/${id}`);
-	return req.json();
+	return await myFetch(`${ENDPOINT_URL}/scorms/${id}`);
 };

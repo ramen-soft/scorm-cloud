@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { ScormListItem } from "../dto/content.dto";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import {
 	Table,
 	TableBody,
@@ -17,21 +12,31 @@ import {
 import { PaginatedResult } from "@/domain/shared/dto/paginated.dto";
 import { Button } from "@/components/ui/button";
 import { Pencil, SearchIcon } from "lucide-react";
+import { CreateScormForm } from "./dialogs/CreateScormForm";
 
 export const ScormList = ({
 	scorms,
+	onChange,
 }: {
 	scorms: PaginatedResult<ScormListItem>;
+	onChange: () => void;
 }) => {
 	return (
 		<>
 			<TooltipProvider delayDuration={100}>
+				<div className="flex items-center space-x-2 justify-end mb-4">
+					<CreateScormForm onChange={() => onChange?.()}>
+						<Button>Agregar contenido</Button>
+					</CreateScormForm>
+				</div>
+
 				<Table className="border">
 					<TableHeader className="bold">
 						<TableRow>
 							<TableHead></TableHead>
+							<TableHead>EAN</TableHead>
 							<TableHead>Nombre</TableHead>
-							<TableHead>Activo</TableHead>
+							<TableHead>Precio</TableHead>
 							<TableHead>Acciones</TableHead>
 						</TableRow>
 					</TableHeader>
@@ -50,24 +55,29 @@ export const ScormList = ({
 											</Button>
 										</div>
 									</TableCell>
+									<TableCell>{scorm.ean || "-"}</TableCell>
 									<TableCell>{scorm.name}</TableCell>
 									<TableCell>
-										{scorm.status ? "Sí" : "No"}
+										{scorm.price.toLocaleString("es-ES", {
+											style: "currency",
+											currency: "EUR",
+											useGrouping: true,
+											maximumFractionDigits: 2,
+											minimumFractionDigits: 2,
+										})}
 									</TableCell>
 									<TableCell className="space-x-2">
-										<Tooltip>
-											<TooltipTrigger asChild>
-												<Button
-													className="rounded-full w-10 h-10 [&_svg]:size-4"
-													variant="default"
-												>
-													<Pencil />
-												</Button>
-											</TooltipTrigger>
-											<TooltipContent className="bg-zinc-600">
-												Editar SCORM
-											</TooltipContent>
-										</Tooltip>
+										<CreateScormForm
+											data={scorm}
+											onChange={() => onChange?.()}
+										>
+											<Button
+												className="rounded-full w-10 h-10 [&_svg]:size-4"
+												variant="default"
+											>
+												<Pencil />
+											</Button>
+										</CreateScormForm>
 									</TableCell>
 								</TableRow>
 							))

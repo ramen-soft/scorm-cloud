@@ -1,7 +1,9 @@
 export interface ScormListItem {
 	id: number;
 	guid: string;
+	ean: string;
 	name: string;
+	price: number;
 	status: boolean;
 }
 

@@ -16,10 +16,13 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CustomerScorm } from "../dto/customer.dto";
+import { ENDPOINT_URL } from "@/consts";
 
 export const CustomerScormList = ({
+	customerId,
 	scorms,
 }: {
+	customerId: number;
 	scorms: PaginatedResult<CustomerScorm>;
 }) => {
 	return (
@@ -49,10 +52,15 @@ export const CustomerScormList = ({
 										<Tooltip>
 											<TooltipTrigger asChild>
 												<Button
+													asChild
 													className="rounded-full w-10 h-10 [&_svg]:size-6"
 													variant="default"
 												>
-													<CloudCog />
+													<a
+														href={`${ENDPOINT_URL}/scorms/${scorm.id}/connector?customer=${customerId}`}
+													>
+														<CloudCog />
+													</a>
 												</Button>
 											</TooltipTrigger>
 											<TooltipContent className="bg-zinc-600">

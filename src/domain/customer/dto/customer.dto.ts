@@ -22,3 +22,18 @@ export interface CustomerScorm {
 	duration: number;
 	created_on: Date;
 }
+
+export interface CustomerUser {
+	id: number;
+	username: string;
+	first_name: string;
+	last_name: string;
+	full_name: string;
+	email: string;
+	status: boolean;
+}
+
+export interface ScormAssignDTO {
+	values: { slots: number; duration: number };
+	scorms: number[];
+}

@@ -17,22 +17,24 @@ export const Pagination = ({
 	onNext,
 }: PaginationProps) => {
 	return (
-		<>
-			{page + 1} de {totalPages}
+		<div className="mb-2 flex space-x-2 items-center">
+			<span>
+				{page + 1} de {totalPages}
+			</span>
 			<Button
-				variant="outline"
 				disabled={prevDisabled}
+				variant={prevDisabled ? "outline" : "default"}
 				onClick={() => onPrevious()}
 			>
 				Anterior
 			</Button>
 			<Button
 				disabled={nextDisabled}
-				variant="outline"
+				variant={nextDisabled ? "outline" : "default"}
 				onClick={() => onNext()}
 			>
 				Siguiente
 			</Button>
-		</>
+		</div>
 	);
 };

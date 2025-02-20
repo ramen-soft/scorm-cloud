@@ -7,6 +7,10 @@ import { CustomersPage } from "@/pages/CustomersPage";
 import { CustomerDetailPage } from "@/pages/CustomerDetailPage";
 import { ScormsPage } from "@/pages/ScormsPage";
 import { ScormDetailPage } from "@/pages/ScormDetailPage";
+import { CustomerScorms } from "@/domain/customer/components/detail/CustomerScorms";
+import { CustomerDashboard } from "@/domain/customer/components/detail/CustomerDashboard";
+import { CustomerUsers } from "@/domain/customer/components/detail/CustomerUsers";
+import { CustomerSubscriptions } from "@/domain/customer/components/detail/CustomerSubscriptions";
 
 const routes: RouteObject[] = [
 	{
@@ -41,6 +45,26 @@ const routes: RouteObject[] = [
 									{
 										path: ":id",
 										element: <CustomerDetailPage />,
+										children: [
+											{
+												path: "",
+												element: <CustomerDashboard />,
+											},
+											{
+												path: "/customers/:id/products",
+												element: <CustomerScorms />,
+											},
+											{
+												path: "/customers/:id/users",
+												element: <CustomerUsers />,
+											},
+											{
+												path: "/customers/:id/subscriptions",
+												element: (
+													<CustomerSubscriptions />
+												),
+											},
+										],
 									},
 								],
 							},

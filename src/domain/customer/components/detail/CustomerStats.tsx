@@ -16,13 +16,14 @@ export const CustomerStats = ({ customerId }: { customerId: number }) => {
 	return (
 		<>
 			{stats ? (
-				<div className="flex justify-stretch space-x-4">
+				<div className="flex justify-stretch max-w-[50%] mx-auto space-x-4">
 					<NumberCard label="Productos" number={stats.scorms} />
 					<NumberCard label="Usuarios" number={stats.users} />
+					{/*
 					<NumberCard
 						label="Suscripciones"
 						number={stats.subscriptions}
-					/>
+					/>*/}
 				</div>
 			) : (
 				<></>
